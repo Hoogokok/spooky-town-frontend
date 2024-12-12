@@ -1,10 +1,15 @@
 (ns spooky-town.core
-  (:require [reagent.dom :as rdom]))
+  (:require [reagent.dom :as rdom]
+            [re-frame.core :as rf]
+            [spooky-town.events]
+            [spooky-town.subs]
+            [spooky-town.views.layout :as layout]))
 
-(defn app []
-  [:div
-   [:h1 "Hello, Spooky Town!"]])
+(defn ^:dev/after-load reload! []
+  (rf/clear-subscription-cache!)
+  (.log js/console "Code updated."))
 
 (defn ^:export init []
-  (rdom/render [app]
-               (.getElementById js/document "app"))) 
+  (rf/dispatch-sync [:initialize-db])
+  (rdom/render [layout/main-layout]
+              (.getElementById js/document "app"))) 
