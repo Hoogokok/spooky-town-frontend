@@ -3,6 +3,7 @@
             [re-frame.core :as rf]
             [spooky-town.events]
             [spooky-town.subs]
+            [spooky-town.routes :as routes]
             [spooky-town.views.layout :as layout]))
 
 (defn ^:dev/after-load reload! []
@@ -11,5 +12,6 @@
 
 (defn ^:export init []
   (rf/dispatch-sync [:initialize-db])
-  (rdom/render [layout/main-layout]
+  (routes/init-routes!)
+  (rdom/render [layout/main]
               (.getElementById js/document "app"))) 

@@ -11,4 +11,10 @@
 (rf/reg-sub
  :loading?
  (fn [db]
-   (:loading? db))) 
+   (:loading? db)))
+
+;; 현재 라우트를 가져오는 구독
+(rf/reg-sub
+ :current-route
+ (fn [db]
+   (:current-route db))) 

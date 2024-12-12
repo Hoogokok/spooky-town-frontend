@@ -12,4 +12,10 @@
 (rf/reg-event-db
  :set-loading
  (fn [db [_ loading?]]
-   (assoc db :loading? loading?))) 
+   (assoc db :loading? loading?)))
+
+;; 현재 라우트를 설정하는 이벤트
+(rf/reg-event-db
+ :set-current-route
+ (fn [db [_ route]]
+   (assoc db :current-route route))) 
