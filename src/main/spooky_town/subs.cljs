@@ -17,4 +17,24 @@
 (rf/reg-sub
  :current-route
  (fn [db]
-   (:current-route db))) 
+   (:current-route db)))
+
+(rf/reg-sub
+ :dashboard/engagement
+ (fn [db]
+   (get-in db [:dashboard :engagement])))
+
+(rf/reg-sub
+ :dashboard/popular-contents
+ (fn [db]
+   (get-in db [:dashboard :popular-contents])))
+
+(rf/reg-sub
+ :dashboard/selected-period
+ (fn [db]
+   (get-in db [:dashboard :selected-period] "today")))
+
+(rf/reg-sub
+ :error
+ (fn [db]
+   (:error db))) 
