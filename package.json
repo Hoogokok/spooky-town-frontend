@@ -2,6 +2,15 @@
   "name": "spooky-town-frontend",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "watch": "shadow-cljs watch app",
+    "release": "shadow-cljs release app",
+    "clean": "rm -rf target && rm -rf public/js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
     "shadow-cljs": "2.28.20"
   }
