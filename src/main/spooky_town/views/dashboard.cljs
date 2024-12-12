@@ -1,4 +1,5 @@
-(ns spooky-town.views.dashboard)
+(ns spooky-town.views.dashboard
+  (:require [spooky-town.views.dashboard.engagement :refer [engagement-overview]]))
 
 (defn header []
   [:div.flex.justify-between.items-center.mb-8
@@ -11,4 +12,6 @@
 
 (defn main []
   [:div
-   [header]]) 
+   [header]
+   [:div.grid.grid-cols-12.gap-6
+    [engagement-overview]]]) 
