@@ -5,13 +5,20 @@
   "scripts": {
     "watch": "shadow-cljs watch app",
     "release": "shadow-cljs release app",
-    "clean": "rm -rf target && rm -rf public/js"
+    "clean": "rm -rf target && rm -rf public/js",
+    "build:css": "tailwindcss -i ./src/css/main.css -o ./public/css/main.css --watch",
+    "build:css:release": "tailwindcss -i ./src/css/main.css -o ./public/css/main.css --minify"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "shadow-cljs": "2.28.20"
+    "shadow-cljs": "2.28.20",
+    "tailwindcss": "^3.4.5",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1"
   }
 }
