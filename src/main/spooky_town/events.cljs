@@ -50,4 +50,25 @@
 (rf/reg-event-db
  :api-error
  (fn [db [_ error]]
-   (assoc db :error error))) 
+   (assoc db :error error)))
+
+;; 기존 이벤트에 추가
+(rf/reg-event-fx
+ :initialize-dashboard
+ (fn [{:keys [db]} _]
+   {:db (assoc-in db [:dashboard :selected-period] "today")
+    :dispatch [:fetch-dashboard-data]}))
+
+(rf/reg-event-fx
+ :refresh-dashboard
+ (fn [_ _]
+   {:dispatch [:fetch-dashboard-data]}))
+
+(rf/reg-event-db
+ :set-period
+ (fn [db [_ period]]
+   (-> db
+       (assoc-in [:dashboard :selected-period] period)
+       (assoc-in [:dashboard :engagement] nil))  ;; 데이터 초기화
+   {:db db
+    :dispatch [:fetch-dashboard-data]})) 
