@@ -6,6 +6,13 @@
 
 (def ^:private api-url "http://localhost:3000/api")
 
+(defn- handle-error [status error-text]
+  (let [error-type (case status
+                    0 :network
+                    404 :not-found
+                    (if (>= status 500) :server :default))]
+    (rf/dispatch [:api-error error-type error-text])))
+
 (defn api-request [method endpoint & [opts]]
   (go
     (try
@@ -19,8 +26,10 @@
         (rf/dispatch [:set-loading false])
         (if (:success response)
           (:body response)
-          (throw (js/Error. (or (:error-text response) "API request failed")))))
+          (do
+            (handle-error (:status response) (:error-text response))
+            nil)))
       (catch js/Error e
-        (rf/dispatch [:set-error (.-message e)])
+        (handle-error 0 (.-message e))
         (rf/dispatch [:set-loading false])
         nil))))

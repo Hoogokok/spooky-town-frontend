@@ -49,8 +49,15 @@
 
 (rf/reg-event-db
  :api-error
- (fn [db [_ error]]
-   (assoc db :error error)))
+ (fn [db [_ error-type error-message]]
+   (assoc db :error {:type error-type
+                     :message error-message
+                     :timestamp (js/Date.now)})))
+
+(rf/reg-event-db
+ :clear-error
+ (fn [db _]
+   (dissoc db :error)))
 
 ;; 기존 이벤트에 추가
 (rf/reg-event-fx
