@@ -38,3 +38,8 @@
  :error
  (fn [db]
    (:error db))) 
+
+(rf/reg-sub
+ :loading?
+ (fn [db]
+   (:loading? db)))

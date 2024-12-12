@@ -60,6 +60,12 @@
    (dissoc db :error)))
 
 ;; 기존 이벤트에 추가
+(rf/reg-event-db
+ :set-loading
+ (fn [db [_ loading?]]
+   (assoc db :loading? loading?)))
+
+;; 기존 이벤트에 추가
 (rf/reg-event-fx
  :initialize-dashboard
  (fn [{:keys [db]} _]
