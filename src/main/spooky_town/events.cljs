@@ -18,4 +18,36 @@
 (rf/reg-event-db
  :set-current-route
  (fn [db [_ route]]
-   (assoc db :current-route route))) 
+   (assoc db :current-route route)))
+
+;; 기존 이벤트에 추가
+(rf/reg-event-fx
+ :fetch-dashboard-data
+ (fn [{:keys [db]} _]
+   {:db db
+    :fx [[:dispatch [:fetch-engagement-data]]
+         [:dispatch [:fetch-popular-contents]]
+         [:dispatch [:fetch-demographics]]
+         [:dispatch [:fetch-distribution]]]}))
+
+(rf/reg-event-fx
+ :fetch-engagement-data
+ (fn [{:keys [db]} _]
+   {:db db
+    :http-xhrio {:method :get
+                 :uri "/api/dashboard/engagement"
+                 :params {:period (:selected-period db)}
+                 :format :json
+                 :response-format :json
+                 :on-success [:set-engagement-data]
+                 :on-failure [:api-error]}}))
+
+(rf/reg-event-db
+ :set-engagement-data
+ (fn [db [_ data]]
+   (assoc-in db [:dashboard :engagement] data)))
+
+(rf/reg-event-db
+ :api-error
+ (fn [db [_ error]]
+   (assoc db :error error))) 
