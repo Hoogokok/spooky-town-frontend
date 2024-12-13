@@ -1,5 +1,7 @@
 (ns spooky-town.views.dashboard.layout
-  (:require [re-frame.core :as rf]))
+  (:require [re-frame.core :as rf]
+            [spooky-town.views.dashboard.cards :refer [popular-contents upcoming-contents]]
+            [spooky-town.views.dashboard.charts :refer [engagement-chart]]))
 
 (defn header []
   [:div.flex.justify-between.items-center.mb-8
@@ -18,15 +20,12 @@
      [:button.px-3.py-1.bg-custom.!rounded-button.text-black.text-sm "오늘"]
      [:button.px-3.py-1.bg-gray-700.!rounded-button.text-sm "주간"]
      [:button.px-3.py-1.bg-gray-700.!rounded-button.text-sm "월간"]]]
-   [:div#engagementChart.h-64]])
+   [engagement-chart]])
 
 (defn side-cards []
   [:div.col-span-4.space-y-6
-   ;; 실제 카드 컴포넌트들은 다음 단계에서 구현
-   [:div.bg-gray-800.rounded-lg.p-6
-    [:h2.text-lg.font-medium.mb-4 "인기 배포 콘텐츠"]]
-   [:div.bg-gray-800.rounded-lg.p-6
-    [:h2.text-lg.font-medium.mb-4 "예정된 콘텐츠"]]])
+   [popular-contents]
+   [upcoming-contents]])
 
 (defn demographics-chart []
   [:div.col-span-6.bg-gray-800.rounded-lg.p-6
