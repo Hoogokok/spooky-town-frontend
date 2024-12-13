@@ -22,3 +22,5 @@ pom.xml.asc
 .env
 
 .clj-kondo/.cache
+
+.lsp/.cache
