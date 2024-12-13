@@ -29,7 +29,7 @@
 (rf/reg-event-db
  :initialize-db
  (fn [_ _]
-   (assoc db/default-db :dashboard mock-data)))
+   (assoc db/default-db :dashboard mock-data :mobile-menu-open? false)))
 
 ;; 로딩 상태를 변경하는 이벤트
 (rf/reg-event-db
@@ -120,4 +120,10 @@
  :init-demographics-chart
  (fn [{:keys [db]} _]
    {:db db
-    :fx [[:init-chart ["demographicsChart" demographics-options]]]})) 
+    :fx [[:init-chart ["demographicsChart" demographics-options]]]}))
+
+(rf/reg-event-db
+ :toggle-mobile-menu
+ (fn [db _]
+   (update db :mobile-menu-open? not)))
+  
