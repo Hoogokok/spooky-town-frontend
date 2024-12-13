@@ -2,7 +2,7 @@
   (:require [re-frame.core :as rf]
             [spooky-town.views.layout.main :refer [main-layout]]))
 
-(defn main []
+(defn root []
   (let [name @(rf/subscribe [:name])
         loading? @(rf/subscribe [:loading?])]
     [main-layout
