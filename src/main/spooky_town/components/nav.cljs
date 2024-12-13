@@ -15,6 +15,47 @@
             "border-transparent text-gray-300 hover:border-gray-300 hover:text-gray-200")}
    label])
 
+(defn mobile-nav-item [{:keys [href label active?]}]
+  [:a.block.px-3.py-2.rounded-md.text-base.font-medium
+   {:href href
+    :class (if active?
+            "bg-gray-900 text-white"
+            "text-gray-300 hover:bg-gray-700 hover:text-white")}
+   label])
+
+(defn mobile-menu []
+  (let [menu-open? @(rf/subscribe [:mobile-menu-open?])]
+    [:div.sm:hidden
+     ;; 햄버거 버튼
+     [:button.inline-flex.items-center.justify-center.p-2.rounded-md.text-gray-400.hover:text-white.hover:bg-gray-700
+      {:on-click #(rf/dispatch [:toggle-mobile-menu])}
+      [:i.fas.fa-bars.h-6.w-6]]
+     
+     ;; 모바일 메뉴 패널
+     [:div.fixed.inset-0.z-40
+      {:class (if menu-open? "block" "hidden")}
+      
+      ;; 배경 오버레이
+      [:div.fixed.inset-0.bg-black.opacity-50
+       {:on-click #(rf/dispatch [:toggle-mobile-menu])}]
+      
+      ;; 메뉴 컨텐츠
+      [:div.fixed.inset-y-0.right-0.max-w-xs.w-full.bg-gray-800.shadow-xl
+       [:div.flex.items-center.justify-between.h-16.px-4.border-b.border-gray-700
+        [:div.flex-shrink-0
+         [:img.h-8.w-auto
+          {:src "https://ai-public.creatie.ai/gen_page/logo_placeholder.png"
+           :alt "Logo"}]]
+        [:button.inline-flex.items-center.justify-center.p-2.rounded-md.text-gray-400.hover:text-white.hover:bg-gray-700
+         {:on-click #(rf/dispatch [:toggle-mobile-menu])}
+         [:i.fas.fa-times.h-6.w-6]]]
+       
+       [:div.px-2.pt-2.pb-3.space-y-1
+        [mobile-nav-item {:href "#" :label "홈" :active? true}]
+        [mobile-nav-item {:href "#" :label "배포 채널"}]
+        [mobile-nav-item {:href "#" :label "콘텐츠 관리"}]
+        [mobile-nav-item {:href "#" :label "구독자 분석"}]]]]]))
+
 (defn new-content-button []
   [:button {:class "bg-custom !rounded-button px-4 py-2 text-black font-medium hover:bg-custom-90"}
    [:i.fas.fa-plus.mr-2] "새 콘텐츠 등록"])
@@ -33,7 +74,8 @@
 
 (defn nav-actions []
   [:div.flex.items-center
-   [new-content-button]
+   [:div.hidden.sm:block  ;; 모바일에서는 숨김
+    [new-content-button]]
    [:div.ml-4.flex.items-center
     [notification-button]
     [profile-button]]])
@@ -44,9 +86,11 @@
     [:div.flex.justify-between.h-16
      [:div.flex
       [logo]
-      [:div.hidden.sm:ml-6.sm:flex.sm:space-x-8
+      [:div.hidden.sm:ml-6.sm:flex.sm:space-x-8  ;; 데스크톱 메뉴
        [nav-item {:href "#" :label "홈" :active? true}]
        [nav-item {:href "#" :label "배포 채널"}]
        [nav-item {:href "#" :label "콘텐츠 관리"}]
        [nav-item {:href "#" :label "구독자 분석"}]]]
-     [nav-actions]]]]) 
+     [:div.flex.items-center
+      [nav-actions]
+      [mobile-menu]]]]])  ;; 모바일 메뉴 추가
