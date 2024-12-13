@@ -2,11 +2,25 @@
   (:require [re-frame.core :as rf]
             [spooky-town.db :as db]))
 
+;; 임시 데이터
+(def mock-data
+  {:engagement {:views 1234
+               :likes 567
+               :comments 89}
+   :popular [{:image "https://ai-public.creatie.ai/gen_page/horror1.jpg"
+             :title "떠도는 그림자"
+             :views "45.2천"
+             :growth "23"}
+            {:image "https://ai-public.creatie.ai/gen_page/horror2.jpg"
+             :title "크림슨 이야기 #5"
+             :views "32.8천"
+             :growth "18"}]})
+
 ;; 앱 초기화 시 기본 DB 상태를 설정하는 이벤트
 (rf/reg-event-db
  :initialize-db
  (fn [_ _]
-   db/default-db))
+   (assoc db/default-db :dashboard mock-data)))
 
 ;; 로딩 상태를 변경하는 이벤트
 (rf/reg-event-db
@@ -24,53 +38,16 @@
 (rf/reg-event-fx
  :fetch-dashboard-data
  (fn [{:keys [db]} _]
-   {:db db
-    :fx [[:dispatch [:fetch-engagement-data]]
-         [:dispatch [:fetch-popular-contents]]
-         [:dispatch [:fetch-demographics]]
-         [:dispatch [:fetch-distribution]]]}))
-
-(rf/reg-event-fx
- :fetch-engagement-data
- (fn [{:keys [db]} _]
-   {:db db
-    :http-xhrio {:method :get
-                 :uri "/api/dashboard/engagement"
-                 :params {:period (:selected-period db)}
-                 :format :json
-                 :response-format :json
-                 :on-success [:set-engagement-data]
-                 :on-failure [:api-error]}}))
+   {:db (assoc db :loading? true)
+    :dispatch-later [{:ms 1000
+                     :dispatch [:set-mock-data]}]}))
 
 (rf/reg-event-db
- :set-engagement-data
- (fn [db [_ data]]
-   (assoc-in db [:dashboard :engagement] data)))
-
-(rf/reg-event-db
- :api-error
- (fn [db [_ error-type error-message]]
-   (assoc db :error {:type error-type
-                     :message error-message
-                     :timestamp (js/Date.now)})))
-
-(rf/reg-event-db
- :clear-error
+ :set-mock-data
  (fn [db _]
-   (dissoc db :error)))
-
-;; 기존 이벤트에 추가
-(rf/reg-event-db
- :set-loading
- (fn [db [_ loading?]]
-   (assoc db :loading? loading?)))
-
-;; 기존 이벤트에 추가
-(rf/reg-event-fx
- :initialize-dashboard
- (fn [{:keys [db]} _]
-   {:db (assoc-in db [:dashboard :selected-period] "today")
-    :dispatch [:fetch-dashboard-data]}))
+   (-> db
+       (assoc :loading? false)
+       (assoc :dashboard mock-data))))
 
 (rf/reg-event-fx
  :refresh-dashboard
@@ -82,6 +59,16 @@
  (fn [db [_ period]]
    (-> db
        (assoc-in [:dashboard :selected-period] period)
-       (assoc-in [:dashboard :engagement] nil))  ;; 데이터 초기화
-   {:db db
-    :dispatch [:fetch-dashboard-data]})) 
+       (assoc-in [:dashboard :engagement] nil))))  ;; 데이터 초기화
+
+(rf/reg-event-db
+ :api-error
+ (fn [db [_ error-type error-message]]
+   (assoc db :error {:type error-type
+                     :message error-message
+                     :timestamp (js/Date.now)})))
+
+(rf/reg-event-db
+ :clear-error
+ (fn [db _]
+   (dissoc db :error))) 

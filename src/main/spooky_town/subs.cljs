@@ -25,14 +25,14 @@
    (get-in db [:dashboard :engagement])))
 
 (rf/reg-sub
- :dashboard/popular-contents
+ :dashboard/popular
  (fn [db]
-   (get-in db [:dashboard :popular-contents])))
+   (get-in db [:dashboard :popular])))
 
 (rf/reg-sub
  :dashboard/selected-period
  (fn [db]
-   (get-in db [:dashboard :selected-period] "today")))
+   (get-in db [:dashboard :selected-period])))
 
 (rf/reg-sub
  :error

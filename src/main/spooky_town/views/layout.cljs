@@ -1,12 +1,12 @@
 (ns spooky-town.views.layout
   (:require [re-frame.core :as rf]
-            [spooky-town.views.layout.main :refer [main-layout]]))
+            [spooky-town.views.layout.main :refer [main-layout]]
+            [spooky-town.views.layout.nav :refer [nav]]))
 
 (defn root []
-  (let [name @(rf/subscribe [:name])
-        loading? @(rf/subscribe [:loading?])]
+  (let [current-route @(rf/subscribe [:current-route])]
     [main-layout
-     [:div
-      [:h1.text-2xl.font-bold name]
-      (when loading?
-        [:div "Loading..."])]])) 
+     (if-let [view (:view (:data current-route))]
+       [view]
+       [:<>
+        [:div "Loading..."]])])) 
