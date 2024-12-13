@@ -28,9 +28,21 @@
    [:div.bg-gray-800.rounded-lg.p-6
     [:h2.text-lg.font-medium.mb-4 "예정된 콘텐츠"]]])
 
+(defn demographics-chart []
+  [:div.col-span-6.bg-gray-800.rounded-lg.p-6
+   [:h2.text-lg.font-medium.mb-6 "구독자 분포"]
+   [:div#demographicsChart.h-64]])
+
+(defn distribution-chart []
+  [:div.col-span-6.bg-gray-800.rounded-lg.p-6
+   [:h2.text-lg.font-medium.mb-6 "콘텐츠 카테고리"]
+   [:div#distributionChart.h-64]])
+
 (defn dashboard-layout []
   [:main.max-w-8xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
    [header]
    [:div.grid.grid-cols-12.gap-6
     [main-chart]
-    [side-cards]]]) 
+    [side-cards]
+    [demographics-chart]
+    [distribution-chart]]]) 
