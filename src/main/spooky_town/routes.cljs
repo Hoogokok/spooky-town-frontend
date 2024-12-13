@@ -10,7 +10,7 @@
 (def routes
   [["/"
     {:name :home
-     :view dashboard/main}]
+     :view dashboard/dashboard}]
    ["/contents"
     {:name :contents
      :view contents/main}]

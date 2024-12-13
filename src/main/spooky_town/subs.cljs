@@ -43,3 +43,8 @@
  :loading?
  (fn [db]
    (:loading? db)))
+
+(rf/reg-sub
+ :mobile-menu-open?
+ (fn [db]
+   (:mobile-menu-open? db)))
