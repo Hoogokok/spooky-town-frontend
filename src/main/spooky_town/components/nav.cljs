@@ -16,7 +16,7 @@
    label])
 
 (defn new-content-button []
-  [:button.bg-custom.!rounded-button.px-4.py-2.text-black.font-medium.hover:bg-custom/90
+  [:button {:class "bg-custom !rounded-button px-4 py-2 text-black font-medium hover:bg-custom-90"}
    [:i.fas.fa-plus.mr-2] "새 콘텐츠 등록"])
 
 (defn notification-button []
