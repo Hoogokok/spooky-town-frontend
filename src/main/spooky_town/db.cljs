@@ -5,4 +5,7 @@
 (def default-db
   {:name "Spooky Town"
    :loading? false
-   :error nil}) 
+   :current-route nil
+   :dashboard {:selected-period "today"
+              :engagement nil
+              :popular nil}}) 
