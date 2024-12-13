@@ -13,29 +13,29 @@
      [:i.fas.fa-th-large.mr-2] "위젯"]]])
 
 (defn main-chart []
-  [:div.col-span-8.bg-gray-800.rounded-lg.p-6
+  [:div.col-span-12.lg:col-span-8.bg-gray-800.rounded-lg.p-6
    [engagement-chart]])
 
 (defn side-cards []
-  [:div.col-span-4.space-y-6
+  [:div.col-span-12.lg:col-span-4.space-y-6
    [popular-contents]
    [upcoming-contents]])
 
 (defn demographics-section []
-  [:div.col-span-6.bg-gray-800.rounded-lg.p-6
+  [:div.col-span-12.md:col-span-6.bg-gray-800.rounded-lg.p-6
    [:h2.text-lg.font-medium.mb-6 "구독자 분포"]
    [demographics-chart]])
 
 (defn distribution-section []
-  [:div.col-span-6.bg-gray-800.rounded-lg.p-6
+  [:div.col-span-12.md:col-span-6.bg-gray-800.rounded-lg.p-6
    [:h2.text-lg.font-medium.mb-6 "콘텐츠 카테고리"]
    [distribution-chart]])
 
 (defn dashboard-layout []
   [:main.max-w-8xl.mx-auto.px-4.sm:px-6.lg:px-8.py-8
    [header]
-   [:div.grid.grid-cols-12.gap-6
+   [:div.grid.grid-cols-12.gap-4.md:gap-6
     [main-chart]
     [side-cards]
     [demographics-section]
-    [distribution-section]]]) 
+    [distribution-section]]])
