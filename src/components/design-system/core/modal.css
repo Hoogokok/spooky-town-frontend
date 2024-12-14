@@ -1,0 +1,64 @@
+/* ==========================================================================
+   Modal Component
+   ========================================================================== */
+
+/* Modal Overlay - 모달 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* Modal Container - 모달 컨테이너 */
+.modal {
+  background-color: var(--surface);
+  border-radius: 0.5rem;
+  padding: var(--spacing-6);
+  max-width: 32rem;
+  width: 100%;
+  margin: var(--spacing-4);
+  position: relative;
+}
+
+/* Modal Header - 모달 헤더 */
+.modal-header {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Modal Title - 모달 제목 */
+.modal-title {
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Modal Content - 모달 내용 */
+.modal-content {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-6);
+}
+
+/* Modal Footer - 모��� 푸터 */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+}
+
+/* Close Button - 닫기 버튼 */
+.modal-close {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  color: var(--text-secondary);
+  cursor: pointer;
+} 
