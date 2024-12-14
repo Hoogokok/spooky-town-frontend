@@ -9,7 +9,8 @@
             [spooky-town.components.design-system.examples.button :refer [button-examples]]
             [spooky-town.components.design-system.examples.card :refer [card-examples]]
             [spooky-town.components.design-system.examples.input :refer [input-examples]]
-            [spooky-town.components.design-system.examples.select :refer [select-examples]]))
+            [spooky-town.components.design-system.examples.select :refer [select-examples]]
+            [spooky-town.components.design-system.examples.modal :refer [modal-examples]]))
 
 (def routes
   [["/"
@@ -32,7 +33,9 @@
     ["/input" {:name :ds-input
                :view input-examples}]
     ["/select" {:name :ds-select
-                :view select-examples}]]])
+                :view select-examples}]
+    ["/modal" {:name :ds-modal
+               :view modal-examples}]]])
 
 (defn on-navigate [new-match]
   (when new-match
