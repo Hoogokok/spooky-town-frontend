@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Chart Component
+   ========================================================================== */
+
+/* Base Chart - 기본 차트 컨테이너 */
+.chart-container {
+    background-color: var(--surface);
+    border-radius: var(--spacing-2);
+    padding: var(--spacing-card);
+  }
+  
+  /* Chart Header - 차트 헤더 */
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  /* Chart Title - 차트 제목 */
+  .chart-title {
+    color: var(--text-primary);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+  }
+  
+  /* Chart Controls - 차트 컨트롤 */
+  .chart-controls {
+    display: flex;
+    gap: var(--spacing-2);
+  }
+  
+  /* Chart Content - 차트 내용 */
+  .chart-content {
+    height: 16rem;  /* 256px */
+    width: 100%;
+  }
+  
+  /* Period Button - 기간 선택 버튼 */
+  .period-button {
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: var(--font-size-sm);
+    border-radius: var(--spacing-2);
+    transition: all 0.2s ease;
+  }
+  
+  .period-button.active {
+    background-color: var(--primary);
+    color: var(--text-primary);
+  }
+  
+  .period-button:not(.active) {
+    background-color: var(--gray-700);
+    color: var(--text-secondary);
+  }

@@ -76,16 +76,14 @@
                   {:value 190 :itemStyle {:color "#F5BB1B"}}]}]})
 
 (defn period-button [{:keys [period label selected?]}]
-  [:button.px-3.py-1.text-sm
-   {:class (if selected?
-            "bg-custom !rounded-button text-black"
-            "bg-gray-700 !rounded-button")
+  [:button.period-button
+   {:class (when selected? "active")
     :on-click #(rf/dispatch [:update-engagement-chart period])}
    label])
 
 (defn period-selector []
   (let [current-period @(rf/subscribe [:selected-period])]
-    [:div.flex.space-x-2
+    [:div.period-selector
      [period-button 
       {:period "today" 
        :label "오늘"
@@ -112,11 +110,11 @@
     (rf/dispatch [:init-engagement-chart])
     (when chart-data
       (js/setTimeout #(update-chart! "engagementChart" chart-data) 0))
-    [:div
-     [:div.flex.justify-between.items-center.mb-6
-      [:h2.text-lg.font-medium "채널별 배포 현황"]
+    [:div.chart-section
+     [:div.chart-header
+      [:h2.chart-title "채널별 배포 현황"]
       [period-selector]]
-     [:div#engagementChart.h-64]]))
+     [:div#engagementChart.chart-content]]))
 
 (defn demographics-chart []
   (js/setTimeout #(init-chart! "demographicsChart" demographics-options) 0)
