@@ -19,10 +19,10 @@
 /* Modal Container - 모달 컨테이너 */
 .modal {
   background-color: var(--surface);
-  border-radius: 0.5rem;
+  border-radius: var(--spacing-2);
   padding: var(--spacing-6);
-  max-width: 32rem;
   width: 100%;
+  max-width: calc(var(--spacing-12) * 8);
   margin: var(--spacing-4);
   position: relative;
 }
@@ -36,18 +36,20 @@
 .modal-title {
   color: var(--text-primary);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
-/* Modal Content - 모달 내용 */
-.modal-content {
+/* Modal Body - 모달 본문 */
+.modal-body {
   color: var(--text-secondary);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
   margin-bottom: var(--spacing-6);
 }
 
-/* Modal Footer - 모��� 푸터 */
+/* Modal Footer - 모달 푸터 */
 .modal-footer {
   display: flex;
   justify-content: flex-end;
@@ -61,4 +63,24 @@
   right: var(--spacing-4);
   color: var(--text-secondary);
   cursor: pointer;
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--spacing-1);
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: var(--gray-700);
+}
+
+/* Modal Sizes */
+.modal-sm {
+  max-width: calc(var(--spacing-12) * 6);
+}
+
+.modal-lg {
+  max-width: calc(var(--spacing-12) * 12);
 } 

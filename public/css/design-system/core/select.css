@@ -6,31 +6,35 @@
 .select {
   width: 100%;
   padding: var(--spacing-2) var(--spacing-3);
-  padding-right: var(--spacing-8); /* 화살표 아이콘 공간 */
+  padding-right: var(--spacing-8);  /* 화살표 아이콘 공간 */
   color: var(--text-primary);
   background-color: transparent;
-  border: 1px solid var(--text-secondary);
-  border-radius: 0.375rem;
-  font-size: var(--font-size-base);
+  border: 1px solid var(--gray-600);  /* text-secondary -> gray-600 */
+  border-radius: var(--spacing-2);
+  font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
-  appearance: none; /* 기본 화살표 제거 */
+  letter-spacing: var(--letter-spacing-normal);
+  appearance: none;  /* 기본 화살표 제거 */
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239CA3AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right var(--spacing-2) center;
   background-size: var(--spacing-4) var(--spacing-4);
+  transition: border-color 0.2s ease;
 }
 
 /* Select Focus - 포커스 상태 */
 .select:focus {
   outline: none;
   border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-transparent);
 }
 
 /* Select Disabled - 비활성화 상태 */
 .select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background-color: var(--gray-800);
 }
 
 /* Select Options - 옵션 스타일 */
@@ -38,4 +42,26 @@
   background-color: var(--surface);
   color: var(--text-primary);
   padding: var(--spacing-2);
+}
+
+/* Select Sizes */
+.select-sm {
+  padding: var(--spacing-1) var(--spacing-2);
+  padding-right: var(--spacing-6);
+  font-size: var(--font-size-xs);
+  background-size: var(--spacing-3) var(--spacing-3);
+}
+
+.select-lg {
+  padding: var(--spacing-3) var(--spacing-4);
+  padding-right: var(--spacing-10);
+  font-size: var(--font-size-base);
+  background-size: var(--spacing-5) var(--spacing-5);
+}
+
+/* Multiple Select */
+.select[multiple] {
+  padding-right: var(--spacing-3);
+  background-image: none;
+  min-height: calc(var(--spacing-12) * 2);  /* 6rem */
 } 
