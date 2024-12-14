@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
+
+/* Design System Foundations */
+@layer components {
+  /* Colors */
+  .bg-custom { @apply bg-yellow-500; }
+  .bg-custom-90 { @apply bg-yellow-400; }
+  .text-custom { @apply text-yellow-500; }
+  
+  /* Typography */
+  .text-display-large { @apply text-4xl font-bold tracking-tight; }
+  .text-headline { @apply text-2xl font-semibold; }
+  .text-body { @apply text-base leading-7; }
+  
+  /* Spacing */
+  .section-padding { @apply px-4 py-6 sm:px-6 lg:px-8; }
+  
+  /* Components */
+  .btn-base { 
+    @apply px-4 py-2 rounded-lg transition-colors duration-200;
+  }
+  .btn-primary {
+    @apply btn-base bg-custom text-gray-900 hover:bg-custom-90;
+  }
+}
+
 @tailwind utilities; 
