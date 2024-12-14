@@ -2,33 +2,32 @@
   (:require [re-frame.core :as rf]))
 
 (defn popular-content-item [{:keys [image title views growth]}]
-  [:div.flex.items-center
-   [:div.w-12.h-12.rounded.bg-gray-700.flex-shrink-0
-    [:img.w-full.h-full.object-cover.rounded
-     {:src image
-      :alt title}]]
-   [:div.ml-4
-    [:h3.text-sm.font-medium title]
-    [:p.text-xs.text-gray-400 (str "조회수: " views)]]
-   [:div.ml-auto.text-custom
-    [:i.fas.fa-arrow-up] (str " " growth "%")]])
+  [:div.card
+   [:div.card-image
+    [:img {:src image :alt title}]]
+   [:div.card-content
+    [:h3.card-title title]
+    [:p.card-subtitle (str "조회수: " views)]]
+   [:div.card-metrics
+    [:i.fas.fa-arrow-up.card-icon]
+    [:span (str " " growth "%")]]])
 
 (defn upcoming-content-item [{:keys [icon title date]}]
-  [:div.flex.items-center
-   [:div.w-12.h-12.rounded.bg-gray-700.flex-shrink-0.flex.items-center.justify-center.text-custom
-    [:i.fas {:class (case icon
-                     :calendar "fa-calendar-alt"
-                     :mask "fa-mask"
-                     "fa-calendar-alt")
-             :class-name "text-2xl"}]]
-   [:div.ml-4
-    [:h3.text-sm.font-medium title]
-    [:p.text-xs.text-gray-400 date]]])
+  [:div.card
+   [:div.card-image.flex.items-center.justify-center
+    [:i.fas.card-icon
+     {:class (case icon
+              :calendar "fa-calendar-alt"
+              :mask "fa-mask"
+              "fa-calendar-alt")}]]
+   [:div.card-content
+    [:h3.card-title title]
+    [:p.card-subtitle date]]])
 
 (defn popular-contents []
-  [:div.bg-gray-800.rounded-lg.p-6
-   [:h2.text-lg.font-medium.mb-4 "인기 배포 콘텐츠"]
-   [:div.space-y-4
+  [:div.content-section
+   [:h2.section-title "인기 배포 콘텐츠"]
+   [:div.card-grid
     [popular-content-item
      {:image "https://ai-public.creatie.ai/gen_page/horror1.jpg"
       :title "떠도는 그림자"
@@ -41,9 +40,9 @@
       :growth "18"}]]])
 
 (defn upcoming-contents []
-  [:div.bg-gray-800.rounded-lg.p-6
-   [:h2.text-lg.font-medium.mb-4 "예정된 콘텐츠"]
-   [:div.space-y-4
+  [:div.content-section
+   [:h2.section-title "예정된 콘텐츠"]
+   [:div.card-grid
     [upcoming-content-item
      {:icon :calendar
       :title "2024 공포영화 페스티벌"
