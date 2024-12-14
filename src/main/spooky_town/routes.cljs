@@ -8,7 +8,8 @@
             [spooky-town.views.analytics :as analytics]
             [spooky-town.components.design-system.examples.button :refer [button-examples]]
             [spooky-town.components.design-system.examples.card :refer [card-examples]]
-            [spooky-town.components.design-system.examples.input :refer [input-examples]]))
+            [spooky-town.components.design-system.examples.input :refer [input-examples]]
+            [spooky-town.components.design-system.examples.select :refer [select-examples]]))
 
 (def routes
   [["/"
@@ -29,7 +30,9 @@
     ["/card" {:name :ds-card
               :view card-examples}]
     ["/input" {:name :ds-input
-               :view input-examples}]]])
+               :view input-examples}]
+    ["/select" {:name :ds-select
+                :view select-examples}]]])
 
 (defn on-navigate [new-match]
   (when new-match
