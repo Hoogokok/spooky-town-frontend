@@ -1,0 +1,68 @@
+/* ==========================================================================
+   Chart Component
+   ========================================================================== */
+
+/* Chart Section - 차트 섹션 */
+.chart-section {
+    background-color: var(--surface);
+    border-radius: var(--spacing-2);
+    padding: var(--spacing-6);
+  }
+  
+  /* Chart Header - 차트 헤더 */
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-6);
+  }
+  
+  /* Chart Title - 차트 제목 */
+  .chart-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-primary);
+  }
+  
+  /* Chart Content - 차트 영역 */
+  .chart-content {
+    height: 16rem;
+  }
+  
+  /* Period Controls - 기간 선택 컨트롤 */
+  .period-controls {
+    display: flex;
+    gap: var(--spacing-2);
+  }
+  
+  /* Period Button - 기간 선택 버튼 */
+  .period-button {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-sm);
+    border-radius: var(--spacing-2);
+    transition: all 0.2s ease;
+    background-color: var(--gray-700);
+    color: var(--text-secondary);
+  }
+  
+  .period-button:hover:not(.active) {
+    background-color: var(--gray-600);
+  }
+  
+  .period-button.active {
+    background-color: var(--primary);
+    color: var(--surface);
+  }
+  
+  /* Chart Axis - 차트 축 스타일 */
+  .chart-axis {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Chart Legend - 차트 범례 스타일 */
+  .chart-legend {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-2) 0;
+  }
