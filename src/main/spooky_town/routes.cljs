@@ -5,7 +5,8 @@
             [spooky-town.views.dashboard :as dashboard]
             [spooky-town.views.contents :as contents]
             [spooky-town.views.events :as events]
-            [spooky-town.views.analytics :as analytics]))
+            [spooky-town.views.analytics :as analytics]
+            [spooky-town.components.design-system.examples.button :refer [button-examples]]))
 
 (def routes
   [["/"
@@ -19,7 +20,10 @@
      :view events/main}]
    ["/analytics"
     {:name :analytics
-     :view analytics/main}]])
+     :view analytics/main}]
+   ["/design-system"
+    ["/button" {:name :ds-button
+                :view button-examples}]]])
 
 (defn on-navigate [new-match]
   (when new-match

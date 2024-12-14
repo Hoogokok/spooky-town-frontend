@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Select Component
+   ========================================================================== */
+
+/* Base Select - 기본 선택 필드 스타일 */
+.select {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  padding-right: var(--spacing-8); /* 화살표 아이콘 공간 */
+  color: var(--text-primary);
+  background-color: transparent;
+  border: 1px solid var(--text-secondary);
+  border-radius: 0.375rem;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  appearance: none; /* 기본 화살표 제거 */
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-2) center;
+  background-size: var(--spacing-4) var(--spacing-4);
+}
+
+/* Select Focus - 포커스 상태 */
+.select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Select Disabled - 비활성화 상태 */
+.select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Select Options - 옵션 스타일 */
+.select option {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  padding: var(--spacing-2);
+} 

@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Input Component
+   ========================================================================== */
+
+/* Base Input - 기본 입력 필드 스타일 */
+.input {
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  color: var(--text-primary);
+  background-color: transparent;
+  border: 1px solid var(--text-secondary);
+  border-radius: 0.375rem;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  transition: border-color 0.2s ease;
+}
+
+/* Input Focus - 포커스 상태 */
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+/* Input Error - 에러 상태 */
+.input-error {
+  border-color: #EF4444;  /* 에러 색상은 나중에 토큰으로 변경 */
+}
+
+/* Input Disabled - 비활성화 상태 */
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 

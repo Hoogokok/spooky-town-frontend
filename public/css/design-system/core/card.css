@@ -1,0 +1,29 @@
+/* ==========================================================================
+   Card Component
+   ========================================================================== */
+
+/* Base Card - 기본 카드 스타일 */
+.card {
+  background-color: var(--surface);
+  border-radius: 0.5rem;
+  padding: var(--spacing-card);
+}
+
+/* Card Header - 카드 헤더 */
+.card-header {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Card Title - 카드 제목 */
+.card-title {
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Card Content - 카드 내용 */
+.card-content {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+} 
