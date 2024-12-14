@@ -1,0 +1,86 @@
+/* ==========================================================================
+   Modal Component
+   ========================================================================== */
+
+/* Modal Overlay - 모달 오버레이 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+/* Modal Container - 모달 컨테이너 */
+.modal {
+  background-color: var(--surface);
+  border-radius: var(--spacing-2);
+  padding: var(--spacing-6);
+  width: 100%;
+  max-width: calc(var(--spacing-12) * 8);
+  margin: var(--spacing-4);
+  position: relative;
+}
+
+/* Modal Header - 모달 헤더 */
+.modal-header {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Modal Title - 모달 제목 */
+.modal-title {
+  color: var(--text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+/* Modal Body - 모달 본문 */
+.modal-body {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-6);
+}
+
+/* Modal Footer - 모달 푸터 */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+}
+
+/* Close Button - 닫기 버튼 */
+.modal-close {
+  position: absolute;
+  top: var(--spacing-4);
+  right: var(--spacing-4);
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: var(--spacing-6);
+  height: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--spacing-1);
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background-color: var(--gray-700);
+}
+
+/* Modal Sizes */
+.modal-sm {
+  max-width: calc(var(--spacing-12) * 6);
+}
+
+.modal-lg {
+  max-width: calc(var(--spacing-12) * 12);
+} 

@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Design System Core Components
+   ========================================================================== */
+
+/* Import Component Styles */
+@import './button.css';
+@import './card.css';
+@import './input.css';
+@import './select.css';
+@import './modal.css';
+
+/* Component Interactions */
+/* Card + Button */
+.card .btn {
+  margin-top: var(--spacing-4);
+}
+
+/* Card + Input/Select */
+.card .input,
+.card .select {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Modal + Button */
+.modal .btn + .btn {
+  margin-left: var(--spacing-3);
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: var(--spacing-4);
+}
+
+.form-group .input,
+.form-group .select {
+  margin-top: var(--spacing-2);
+} 

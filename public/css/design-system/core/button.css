@@ -1,0 +1,51 @@
+/* ==========================================================================
+   Button Component
+   ========================================================================== */
+
+/* Base Button - 기본 버튼 스타일 */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-button);
+  border-radius: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  transition: all 0.2s ease;
+}
+
+/* Primary Button - 주요 버튼 */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Secondary Button - 보조 버튼 */
+.btn-secondary {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary);
+  color: var(--text-primary);
+}
+
+/* Small Button - 작은 버튼 */
+.btn-sm {
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size-xs);
+}
+
+/* Large Button - 큰 버튼 */
+.btn-lg {
+  padding: var(--spacing-3) var(--spacing-6);
+  font-size: var(--font-size-base);
+} 
